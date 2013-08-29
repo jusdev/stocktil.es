@@ -1,4 +1,4 @@
-stocktilejs (alpha)
+stocktile.js (alpha)
 ===================
 Simple user-friendly stock monitor that updates real time data for entered symbols
 
@@ -16,4 +16,5 @@ alpha - base code
 Contributors
 ============
 [Ashton Paul](https://github.com/ashtonp "ashtonp")
+
 [Hillius Ettinoffe](https://github.com/hilliuse "hilliuse")
