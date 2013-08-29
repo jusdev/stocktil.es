@@ -13,6 +13,16 @@ alpha - base code
 - [ ] v5 - widigitize
 
 
+Usage
+=====
+Add the file **quotes.php** and the **js folder** in same directory level as your page. Then include the javascript and jquery lines to your `<head>` area of your page
+```<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="js/stocktile.js"></script>```
+	
+Simply place div in desired location in the `<body>` of your page
+`<div id='quoteContent'></div>`
+
+
 Contributors
 ============
 [Ashton Paul](https://github.com/ashtonp "ashtonp")
