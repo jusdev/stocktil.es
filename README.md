@@ -15,5 +15,5 @@ alpha - base code
 
 Contributors
 ============
-Ashton Paul (@ashtonp)
-Hillius Ettinoffe (@hilliuse)
+[Ashton Paul](https://github.com/ashtonp "ashtonp")
+[Hillius Ettinoffe](https://github.com/hilliuse "hilliuse")
