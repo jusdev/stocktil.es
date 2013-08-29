@@ -9,7 +9,7 @@ Add the file **quotes.php** and the **js folder** in same directory level as you
 `<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>`
 `<script type="text/javascript" src="js/stocktile.js"></script>`
 	
-Simply place div in desired location in the `<body>` of your page
+Simply place `<div>` in desired location in the `<body>` of your page
 `<div id='quoteContent'></div>`
 
 
