@@ -15,12 +15,13 @@ Simply place `<div>` in desired location in the `<body>` of your page
 
 Release Cycle
 =============
-alpha - base code
-- [x] v1 - css styling
-- [ ] v2 - angularjs
-- [ ] v3 - html5 offline storage
-- [ ] v4 - sort by value, price, change etc.
-- [ ] v5 - widigitize
+- [x] alpha - base code
+- [ ] v1   - css styling
+- [ ] v1.5 - input to take comma delimited list
+- [ ] v2   - angularjs
+- [ ] v3   - html5 offline storage
+- [ ] v4   - sort by value, price, change etc.
+- [ ] v5   - widigitize
 
 
 Contributors
