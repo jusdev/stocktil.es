@@ -2,6 +2,10 @@ stocktile.js (alpha)
 ===================
 Simple user-friendly stock monitor that updates real time data for entered symbols
 
+Demo
+====
+[http://jusdev.com/projects/stocktile.js/](http://jusdev.com/projects/stocktile.js/ "stocktile.js")
+
 
 Usage
 =====
