@@ -196,6 +196,28 @@ function get_data(symbols) {
 }
 
 
+//clear all symbols from page
+function removeAll(){
+	//if the list is not already empty
+	if (defaultSymbols.length !== 0) {
+		//stop pulling for new data
+		stopRefresh();
+		
+		//clear out the symbols list
+		defaultSymbols = [];
+		
+		//clear out the cookie values
+		writeCookie('quoteWidget', defaultSymbols, sessionTime);
+		
+		//remove elements from list on screen
+		$('#quoteList li').remove();
+		
+		//update the screen
+		startRefresh(time);
+	}	
+}
+
+
 //add stock symbol to data list from textbox
 function addSymbol(){
 	//format string for passing in url by removing all special characters, whitespace and numbers
@@ -242,6 +264,7 @@ $(document).ready(function () {
 	$("#quoteData").prepend("<div id='addStock'>" + 
 	"<input type='text' size='15' class='stockSymbol' />" +
 	"<button type='submit' value='+' class='qtyplus'>+</button>" +
+	"<button type='submit' value='--' class='allMinus'>Clear All</button>" +
 	"</div>");
 	
 	//get saved symbols from previous session
@@ -265,6 +288,12 @@ $(document).on('click', '.qtyminus', function() {
 	//start back refresh updates after cookies is written to
 	get_data(defaultSymbols);
 	startRefresh(time);
+});
+
+
+//remove all items from list when the remove all is clicked
+$(document).on('click', '.allMinus', function() {
+	removeAll();
 });
 
 
