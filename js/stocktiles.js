@@ -87,21 +87,25 @@ function formatJson (quoteList, count) {
 	
 	for (var i = 0; i < count; i++) {	
 		var stockData = (count == 1 ? quoteList : quoteList[i]); 
-		var plusMinus = stockData.PercentChange[0];		
-		ulString += "<li class='quote " + transPlusMinus[plusMinus] + "'>";
+		var plusMinus = stockData.PercentChange[0];
 		
-			ulString += "<button type='button' value='-' class='qtyminus' name='" + stockData.symbol.toUpperCase() + "'>-</button>";
+		//error checking for non-existent - don't show non-existent stocks in lise
+		if ((stockData.MarketCapitalization !== null) && (stockData.PreviousClose !== null)) {
+			ulString += "<li class='quote " + transPlusMinus[plusMinus] + "'>";
 			
-			ulString += "<ul class='quoteDetailsList'>";
-				ulString += "<li class='symbol'>" + stockData.symbol + "</li>";
-				ulString += "<li class='name'>" + stockData.Name + "</li>";
-				ulString += "<li class='marketCap'>" + stockData.MarketCapitalization + "</li>";		
-				ulString += "<li class='lastTradePrice'>" + stockData.LastTradePriceOnly + "</li>";		
-				ulString += "<li class='percentChange'>" + stockData.PercentChange + "</li>";
-				ulString += "<li class='previousClose'>" + stockData.PreviousClose + "</li>";
-			ulString += "</ul>";
-		
-		ulString += "</li>";
+				ulString += "<button type='button' value='-' class='qtyminus' name='" + stockData.symbol.toUpperCase() + "'>-</button>";
+				
+				ulString += "<ul class='quoteDetailsList'>";
+					ulString += "<li class='symbol'>" + stockData.symbol + "</li>";
+					ulString += "<li class='name'>" + stockData.Name + "</li>";
+					ulString += "<li class='marketCap'>" + stockData.MarketCapitalization + "</li>";		
+					ulString += "<li class='lastTradePrice'>" + stockData.LastTradePriceOnly + "</li>";		
+					ulString += "<li class='percentChange'>" + stockData.PercentChange + "</li>";
+					ulString += "<li class='previousClose'>" + stockData.PreviousClose + "</li>";
+				ulString += "</ul>";
+			
+			ulString += "</li>";
+		}
 	}
 	ulString += "</ul>";
 	return ulString;
