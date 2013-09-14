@@ -225,11 +225,23 @@ function removeAll(){
 }
 
 
-//add stock symbol to data list from textbox
-function addSymbol(){
+//parse inputed symbols and separately add them if a comma is present
+function parseSymbols() {
 	//format string for passing in url by removing all special characters, whitespace and numbers
-	symbol = $('.stockSymbol').val().toUpperCase().replace(/[^A-Za-z0-9.:]/g, "");;
+	var symbol = $('.stockSymbol').val().toUpperCase().replace(/[^A-Za-z0-9.:,]/g, "");
 	
+	//separate comma separated string into an array
+	var symbolList = symbol.split(',');
+	
+	//for each item in symbolList add it to the tiles
+	for (i = 0; i < symbolList.length; i++) {
+		addSymbol(symbolList[i]);
+	}
+}
+
+
+//add stock symbol to data list from textbox
+function addSymbol(symbol) {
 	//if not empty and the symbol doesn't already exist 
 	if ((symbol) && (defaultSymbols.indexOf(symbol) == -1 )) {
 		defaultSymbols.push(symbol.toUpperCase());
@@ -306,14 +318,14 @@ $(document).on('click', '.allMinus', function() {
 
 //add an item to the list of the plus sign is clicked
 $(document).on('click','.qtyplus', function() {
-	addSymbol();		
+	 parseSymbols();		
 });
 
 
 //trigger the add symbol function when enter is pressed
 $(document).on('keypress', '.stockSymbol', function (e) {
    if ( e.keyCode == 13 ){
-      addSymbol();
+       parseSymbols();
     }
 });
 
