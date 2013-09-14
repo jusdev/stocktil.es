@@ -1,4 +1,4 @@
-stocktile.js v1
+stocktile.js v1.5
 ===================
 Simple user-friendly stock monitor that updates real time data for entered symbols
 
@@ -23,7 +23,7 @@ Release Cycle
 =============
 - [x] alpha - base code
 - [x] v1    - css styling
-- [ ] v1.5  - input to take comma delimited list
+- [x] v1.5  - input to take comma delimited list
 - [ ] v2    - angularjs
 - [ ] v3    - html5 offline storage
 - [ ] v4    - sort by value, price, change etc.
