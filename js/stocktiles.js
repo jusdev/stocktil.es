@@ -86,18 +86,19 @@ function formatJson (quoteList, count) {
 	};	
 	
 	for (var i = 0; i < count; i++) {	
-		var plusMinus = quoteList[i].PercentChange[0];		
+		var stockData = (count == 1 ? quoteList : quoteList[i]); 
+		var plusMinus = stockData.PercentChange[0];		
 		ulString += "<li class='quote " + transPlusMinus[plusMinus] + "'>";
 		
-			ulString += "<button type='button' value='-' class='qtyminus' name='" + quoteList[i].symbol.toUpperCase() + "'>-</button>";
+			ulString += "<button type='button' value='-' class='qtyminus' name='" + stockData.symbol.toUpperCase() + "'>-</button>";
 			
 			ulString += "<ul class='quoteDetailsList'>";
-				ulString += "<li class='symbol'>" + quoteList[i].symbol + "</li>";
-				ulString += "<li class='name'>" + quoteList[i].Name + "</li>";
-				ulString += "<li class='marketCap'>" + quoteList[i].MarketCapitalization + "</li>";		
-				ulString += "<li class='lastTradePrice'>" + quoteList[i].LastTradePriceOnly + "</li>";		
-				ulString += "<li class='percentChange'>" + quoteList[i].PercentChange + "</li>";
-				ulString += "<li class='previousClose'>" + quoteList[i].PreviousClose + "</li>";
+				ulString += "<li class='symbol'>" + stockData.symbol + "</li>";
+				ulString += "<li class='name'>" + stockData.Name + "</li>";
+				ulString += "<li class='marketCap'>" + stockData.MarketCapitalization + "</li>";		
+				ulString += "<li class='lastTradePrice'>" + stockData.LastTradePriceOnly + "</li>";		
+				ulString += "<li class='percentChange'>" + stockData.PercentChange + "</li>";
+				ulString += "<li class='previousClose'>" + stockData.PreviousClose + "</li>";
 			ulString += "</ul>";
 		
 		ulString += "</li>";
