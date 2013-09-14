@@ -4,7 +4,7 @@ Simple user-friendly stock monitor that updates real time data for entered symbo
 
 Demo
 ====
-[http://jusdev.com/projects/stocktil.es/](http://jusdev.com/projects/stocktil.es/ "stocktil.es")
+[http://stocktil.es/demo/](http://stocktil.es/demo/ "stocktil.es")
 
 
 Usage
