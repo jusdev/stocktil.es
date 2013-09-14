@@ -1,4 +1,4 @@
-stocktile.js (alpha)
+stocktile.js v1
 ===================
 Simple user-friendly stock monitor that updates real time data for entered symbols
 
