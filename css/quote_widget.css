@@ -1,0 +1,263 @@
+/*h1 {
+  font: 400 20px/1.5 Helvetica, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+ 
+li:last-child {
+  border: none;
+}
+
+li a {
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  display: block;
+  width: 100%;
+ 
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+li a:hover {
+  background: #f6f6f6;
+}
+
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}*/
+html {
+	background: #fafafa;
+	color: #545454;
+	font-size: 1.2em;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+	line-height: 1.5;
+}
+bodys{
+	padding-top: 5px;
+}
+
+#addStock {
+	width: 100%;
+	background: url(../img/stock_bg.jpg) center center no-repeat;
+	background-size: cover;
+	text-align: center;
+	padding: 20px 0;
+	/*position: absolute;
+	top: -65px;*/
+}
+
+#addStock .stockSymbol {
+	border: 0px;
+	padding: 0px 10px;
+	margin: 0px;	
+	outline: none;
+	display: inline-block;
+	
+	height: 32px;
+	line-height: 32px;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+#addStock .stockSymbol:focus {
+	border: 1px solid #50b956;
+	border-right: 0px;
+	-webit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	
+	-moz-box-shadow: 0px 0px 2px #50b956;
+  -webkit-box-shadow: 0px 0px 2px #50b956;
+	box-shadow: 0px 0px 2px #50b956;
+}
+
+#addStock .qtyplus {
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	display: inline-block;
+	
+	height: 30px;
+	width: 30px;
+	
+	font-size: 20px;	
+	
+	font-weight: bold;
+	color: #fff;
+	
+	
+	background: #50b956;
+	color: #fff;
+	
+	cursor: pointer;	
+}
+
+#quoteContent {
+	padding: 10px;
+	text-align: center;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#quoteContent #quoteList {
+	margin: 0px;
+	padding: 0px;
+}
+#quoteContent #quoteList .quote {
+	display: inline-block;
+	/*border: 1px solid black;*/
+	background: #fefefe;
+	min-width: 200px;
+	text-align: left;
+	position: relative;
+	
+	-moz-box-shadow: 0px 2px 3px #dadada;
+  -webkit-box-shadow: 0px 2px 3px #dadada;
+	box-shadow: 0px 2px 3px #dadada;
+	
+	margin: 10px;
+	padding: 10px 15px;
+	
+	border: 0px solid #888;
+	border-top: 3px solid #888;
+	
+	border-radius: 3px;	
+	
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#quoteContent #quoteList .quote.plus {
+	border-color: #50b956;
+}
+#quoteContent #quoteList .quote.minus {
+	border-color: #ee5353;
+}
+#quoteContent #quoteList .quote.plus:hover {
+	background-color: #f6fbf6;
+}
+#quoteContent #quoteList .quote.minus:hover {
+	background-color: #fef6f6;
+}
+
+#quoteContent #quoteList .quote .qtyminus {
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	display: none;
+	
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	
+	height: 30px;
+	width: 30px;
+	border-radius: 3px;
+	
+	font-size: 30px;	
+	line-height: 30px;
+	
+	font-weight: bold;
+	
+	background: #eaeaea;
+	color: #fff;
+	color: #888;
+	
+	cursor: pointer;	
+}
+#quoteContent #quoteList .quote:hover .qtyminus {
+	display: block;
+}
+
+.quoteDetailsList {
+	margin: 0px;
+	padding: 0px;
+}
+
+.quoteDetailsList li {
+	padding: 5px 0;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.quoteDetailsList .symbol{
+	text-transform: uppercase;
+	
+	letter-spacing: 1px;
+	font-size: 150%;
+}
+.quoteDetailsList .name{
+	font-size: 100%;
+}
+.quoteDetailsList .lastTradePrice{
+	font-size: 150%;	
+}
+.quoteDetailsList .percentChange{
+	font-size: 300%;
+	text-align: right;	
+	font-weight: 300;
+}
+
+#quoteContent #quoteList .quote.plus .quoteDetailsList .percentChange{ color: #285c2b;}
+#quoteContent #quoteList .quote.minus .quoteDetailsList .percentChange{ color: #772929;}
+
+
+@media (max-width: 480px) {
+	
+	
+	html, body, #quoteData, #addStock, #quoteContent, #quoteList {
+		width: 100%;
+	}
+	#quoteData, #addStock, #quoteContent, #quoteList {
+		display: block;
+		-webit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	#quoteContent {
+		padding: 10px 20px;
+	}
+	#quoteList {
+	
+	}
+	
+	#quoteList .quote {
+		display: block;
+		width: 100%;
+		
+		margin: 10px auto !important;
+		
+		-webit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.quote .qtyminus {
+			display: block;	
+	}
+}

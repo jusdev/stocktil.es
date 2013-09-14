@@ -1,10 +1,13 @@
 <?php
 	//if valid parameters are passed to the script
 	if (isset($_GET['q']) && !empty($_GET['q'])) {
+	
+		
+		
 		//prepare YQL query statement	 
 		$base_url      = "https://query.yahooapis.com/v1/public/yql?q="; 
 		$criteria      = "'".str_replace(",","','",$_GET['q'])."'";
-	  	$result_fields = 'symbol, Name, LastTradePriceOnly, PercentChange, PreviousClose, MarketCapitalization';
+	  $result_fields = 'symbol, Name, LastTradePriceOnly, PercentChange, PreviousClose, MarketCapitalization';
 		
 		// Form YQL query and build URI to YQL Web service
 		$yql_query     = "select ".$result_fields." from yahoo.finance.quotes where symbol in (".$criteria.")";
@@ -17,12 +20,31 @@
 		// Make cURL call to pull JSON data 
 		$session = curl_init($yql_query_url);
 		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-		$json = strip_tags(curl_exec($session));
+		//$json = strip_tags(curl_exec($session));
+		$json = curl_exec($session);
+		
+		
+		// Inspect during creation
+		if (isset($_GET['format'])) {
+			echo "<pre>";
+			if ($_GET['format'] == "array"){
+				var_dump(json_decode(curl_exec($session), true));			
+			} else if ($_GET['format'] == "string") {
+				var_dump($json);
+			}
+			echo "</pre>";
+		}
+		
+		//echo "<pre>";
+		//var_dump(json_decode(curl_exec($session), true));
+		//var_dump($json);
+		//echo "</pre>";
 		
 		//set error reporting to original state
 		error_reporting($current_error_reporting);
 		  
 	 	//return output of script
-	 	echo $json;
+		if (!isset($_GET['format']))
+			echo $json;
 	}
 ?>
