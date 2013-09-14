@@ -22,7 +22,7 @@ Simply place `<div>` in desired location in the `<body>` of your page.
 Release Cycle
 =============
 - [x] alpha - base code
-- [ ] v1    - css styling
+- [x] v1    - css styling
 - [ ] v1.5  - input to take comma delimited list
 - [ ] v2    - angularjs
 - [ ] v3    - html5 offline storage
