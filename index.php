@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>StockTil.es - Visualize your investments</title>
+	<title>StockTil.es - Visualize Your Investments</title>
 	<meta charset="utf-8" />
 	<meta name="description" content="Quick Stock Monitoring" />
 	<meta name="author" content="Ashton Paul" />
