@@ -167,32 +167,34 @@ function breakJsonBranch(data, name) {
 
 //use AJAX to get data from PHP script
 function get_data(symbols) {
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function()
-  	{
-  		//if the results are fully processed and status is OK
-  		if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200))
-    	{
-    		//save data from AJAX response from PHP script
-    		var data = xmlhttp.responseText;			
-			
-				//change data from string to JSON object
-				jsonData = jQuery.parseJSON(data);
-				var quoteCount = jsonData.query.count;
-				if (jsonData.query.results.quote != null){	
-					var quoteList = jsonData.query.results.quote;
-				}
+	//get data from PHP script if there is at least one symbol
+	if (symbols.toString() !== '') {
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function()
+	  	{
+	  		//if the results are fully processed and status is OK
+	  		if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200))
+	    	{
+	    		//save data from AJAX response from PHP script
+	    		var data = xmlhttp.responseText;			
 				
-				//if (quoteList != null) {
-    		document.getElementById(divName).innerHTML = formatJson(quoteList, quoteCount);
-    		//}
-    
-    	}
-  	}
-	
-	//get data from PHP script
-	xmlhttp.open("GET","quotes.php?q="+symbols.toString(),true);	
-	xmlhttp.send();
+					//change data from string to JSON object
+					jsonData = jQuery.parseJSON(data);
+					var quoteCount = jsonData.query.count;
+					if (jsonData.query.results.quote != null){	
+						var quoteList = jsonData.query.results.quote;
+					}
+					
+					//if (quoteList != null) {
+	    		document.getElementById(divName).innerHTML = formatJson(quoteList, quoteCount);
+	    		//}
+	    
+	    	}
+	  	}
+		
+		xmlhttp.open("GET","quotes.php?q="+ symbols.toString(),true);	
+		xmlhttp.send();
+	}
 }
 
 
