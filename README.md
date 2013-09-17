@@ -24,6 +24,7 @@ Usage
 * Remove a symbol by clicking the minus sign (-)
 * Clear all tiles by pressing the clear all button
 * TODO: Click symbol in tile to get detailed stock information from [Google Finance Page] (https://www.google.com/finance "Google Finance")
+* Stock symbols entered will stay in the cookie for two days
 
 
 Release Cycle
