@@ -23,7 +23,7 @@ Usage
 * Enter stock symbol either one at a time (goog) or multiple symbols using commas (goog,aapl,msft)
 * Remove a symbol by clicking the minus sign (-)
 * Clear all tiles by pressing the clear all button
-* Click symbol in tile to get detailed stock information from [Google Finance Page] (https://www.google.com/finance "Google Finance")
+* TODO: Click symbol in tile to get detailed stock information from [Google Finance Page] (https://www.google.com/finance "Google Finance")
 
 
 Release Cycle
