@@ -11,7 +11,7 @@ var time = 2;
 var divName = 'quoteContent';
 
 //the amount of days the cookie will be set for
-var sessionTime = 1;
+var sessionTime = 2;
 
 
 
