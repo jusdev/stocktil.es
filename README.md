@@ -1,6 +1,7 @@
 stocktil.es v1.5
-===================
+================
 Simple user-friendly stock monitor that updates real time data for entered symbols
+
 
 Demo
 ====
@@ -13,7 +14,7 @@ Add the file **quotes.php** and the **js folder** in same directory level as you
 * `<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>`
 * `<script type="text/javascript" src="js/stocktile.js"></script>`
 	
-Simply place `<div>` in desired location in the `<body>` of your page.
+Then simply place `<div>` in desired location in the `<body>` of your page.
 * `<div id='quoteContent'></div>`
 
 
@@ -22,6 +23,8 @@ Usage
 * Enter stock symbol either one at a time (goog) or multiple symbols using commas (goog,aapl,msft)
 * Remove a symbol by clicking the minus sign (-)
 * Clear all tiles by pressing the clear all button
+* Click symbol in tile to get detailed stock information from [Google Finance Page] (https://www.google.com/finance "Google Finance")
+
 
 Release Cycle
 =============
@@ -36,6 +39,5 @@ Release Cycle
 
 Contributors
 ============
-[Ashton Paul](https://github.com/ashtonp "ashtonp")
-
-[Hillius Ettinoffe](https://github.com/hilliuse "hilliuse")
+* [Ashton Paul](https://github.com/ashtonp "ashtonp")
+* [Hillius Ettinoffe](https://github.com/hilliuse "hilliuse")
