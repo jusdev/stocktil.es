@@ -7,17 +7,21 @@ Demo
 [http://stocktil.es/demo/](http://stocktil.es/demo/ "stocktil.es")
 
 
-Usage
-=====
+Installation
+============
 Add the file **quotes.php** and the **js folder** in same directory level as your page. Then include the javascript and jquery lines to your `<head>` area of your page.
-
-`<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>`
-`<script type="text/javascript" src="js/stocktile.js"></script>`
+* `<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>`
+* `<script type="text/javascript" src="js/stocktile.js"></script>`
 	
 Simply place `<div>` in desired location in the `<body>` of your page.
+* `<div id='quoteContent'></div>`
 
-`<div id='quoteContent'></div>`
 
+Usage
+=====
+* Enter stock symbol either one at a time (goog) or multiple symbols using commas (goog,aapl,msft)
+* Remove a symbol by clicking the minus sign (-)
+* Clear all tiles by pressing the clear all button
 
 Release Cycle
 =============
