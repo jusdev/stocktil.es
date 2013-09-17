@@ -1,4 +1,4 @@
-stocktile.js v1.5
+stocktil.es v1.5
 ===================
 Simple user-friendly stock monitor that updates real time data for entered symbols
 
