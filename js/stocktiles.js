@@ -11,7 +11,7 @@ var time = 2;
 var divName = 'quoteContent';
 
 //the amount of days the cookie will be set for
-var sessionTime = 1;
+var sessionTime = 2;
 
 
 
@@ -86,21 +86,26 @@ function formatJson (quoteList, count) {
 	};	
 	
 	for (var i = 0; i < count; i++) {	
-		var plusMinus = quoteList[i].PercentChange[0];		
-		ulString += "<li class='quote " + transPlusMinus[plusMinus] + "'>";
+		var stockData = (count == 1 ? quoteList : quoteList[i]); 
+		var plusMinus = stockData.PercentChange[0];
 		
-			ulString += "<button type='button' value='-' class='qtyminus' name='" + quoteList[i].symbol.toUpperCase() + "'>-</button>";
+		//error checking for non-existent - don't show non-existent stocks in lise
+		if ((stockData.MarketCapitalization !== null) && (stockData.PreviousClose !== null)) {
+			ulString += "<li class='quote " + transPlusMinus[plusMinus] + "'>";
 			
-			ulString += "<ul class='quoteDetailsList'>";
-				ulString += "<li class='symbol'>" + quoteList[i].symbol + "</li>";
-				ulString += "<li class='name'>" + quoteList[i].Name + "</li>";
-				ulString += "<li class='marketCap'>" + quoteList[i].MarketCapitalization + "</li>";		
-				ulString += "<li class='lastTradePrice'>" + quoteList[i].LastTradePriceOnly + "</li>";		
-				ulString += "<li class='percentChange'>" + quoteList[i].PercentChange + "</li>";
-				ulString += "<li class='previousClose'>" + quoteList[i].PreviousClose + "</li>";
-			ulString += "</ul>";
-		
-		ulString += "</li>";
+				ulString += "<button type='button' value='-' class='qtyminus' name='" + stockData.symbol.toUpperCase() + "'>-</button>";
+				
+				ulString += "<ul class='quoteDetailsList'>";
+					ulString += "<li class='symbol'>" + stockData.symbol + "</li>";
+					ulString += "<li class='name'>" + stockData.Name + "</li>";
+					ulString += "<li class='marketCap'>" + stockData.MarketCapitalization + "</li>";		
+					ulString += "<li class='lastTradePrice'>" + stockData.LastTradePriceOnly + "</li>";		
+					ulString += "<li class='percentChange'>" + stockData.PercentChange + "</li>";
+					ulString += "<li class='previousClose'>" + stockData.PreviousClose + "</li>";
+				ulString += "</ul>";
+			
+			ulString += "</li>";
+		}
 	}
 	ulString += "</ul>";
 	return ulString;
@@ -167,40 +172,76 @@ function breakJsonBranch(data, name) {
 
 //use AJAX to get data from PHP script
 function get_data(symbols) {
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function()
-  	{
-  		//if the results are fully processed and status is OK
-  		if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200))
-    	{
-    		//save data from AJAX response from PHP script
-    		var data = xmlhttp.responseText;			
-			
-				//change data from string to JSON object
-				jsonData = jQuery.parseJSON(data);
-				var quoteCount = jsonData.query.count;
-				if (jsonData.query.results.quote != null){	
-					var quoteList = jsonData.query.results.quote;
-				}
+	//get data from PHP script if there is at least one symbol
+	if (symbols.toString() !== '') {
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function()
+	  	{
+	  		//if the results are fully processed and status is OK
+	  		if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200))
+	    	{
+	    		//save data from AJAX response from PHP script
+	    		var data = xmlhttp.responseText;			
 				
-				//if (quoteList != null) {
-    		document.getElementById(divName).innerHTML = formatJson(quoteList, quoteCount);
-    		//}
-    
-    	}
-  	}
+					//change data from string to JSON object
+					jsonData = jQuery.parseJSON(data);
+					var quoteCount = jsonData.query.count;
+					if (jsonData.query.results.quote != null){	
+						var quoteList = jsonData.query.results.quote;
+					}
+					
+					//if (quoteList != null) {
+	    		document.getElementById(divName).innerHTML = formatJson(quoteList, quoteCount);
+	    		//}
+	    
+	    	}
+	  	}
+		
+		xmlhttp.open("GET","quotes.php?q="+ symbols.toString(),true);	
+		xmlhttp.send();
+	}
+}
+
+
+//clear all symbols from page
+function removeAll(){
+	//if the list is not already empty
+	if (defaultSymbols.length !== 0) {
+		//stop pulling for new data
+		stopRefresh();
+		
+		//clear out the symbols list
+		defaultSymbols = [];
+		
+		//clear out the cookie values
+		writeCookie('quoteWidget', defaultSymbols, sessionTime);
+		
+		//remove elements from list on screen
+		$('#quoteList li').remove();
+		
+		//update the screen
+		startRefresh(time);
+	}	
+}
+
+
+//parse inputed symbols and separately add them if a comma is present
+function parseSymbols() {
+	//format string for passing in url by removing all special characters, whitespace and numbers
+	var symbol = $('.stockSymbol').val().toUpperCase().replace(/[^A-Za-z0-9.:,]/g, "");
 	
-	//get data from PHP script
-	xmlhttp.open("GET","quotes.php?q="+symbols.toString(),true);	
-	xmlhttp.send();
+	//separate comma separated string into an array
+	var symbolList = symbol.split(',');
+	
+	//for each item in symbolList add it to the tiles
+	for (i = 0; i < symbolList.length; i++) {
+		addSymbol(symbolList[i]);
+	}
 }
 
 
 //add stock symbol to data list from textbox
-function addSymbol(){
-	//format string for passing in url by removing all special characters, whitespace and numbers
-	symbol = $('.stockSymbol').val().toUpperCase().replace(/[^A-Za-z0-9.:]/g, "");;
-	
+function addSymbol(symbol) {
 	//if not empty and the symbol doesn't already exist 
 	if ((symbol) && (defaultSymbols.indexOf(symbol) == -1 )) {
 		defaultSymbols.push(symbol.toUpperCase());
@@ -242,6 +283,7 @@ $(document).ready(function () {
 	$("#quoteData").prepend("<div id='addStock'>" + 
 	"<input type='text' size='15' class='stockSymbol' />" +
 	"<button type='submit' value='+' class='qtyplus'>+</button>" +
+	"<button type='submit' value='--' class='allMinus'>Clear All</button>" +
 	"</div>");
 	
 	//get saved symbols from previous session
@@ -268,16 +310,22 @@ $(document).on('click', '.qtyminus', function() {
 });
 
 
+//remove all items from list when the remove all is clicked
+$(document).on('click', '.allMinus', function() {
+	removeAll();
+});
+
+
 //add an item to the list of the plus sign is clicked
 $(document).on('click','.qtyplus', function() {
-	addSymbol();		
+	 parseSymbols();		
 });
 
 
 //trigger the add symbol function when enter is pressed
 $(document).on('keypress', '.stockSymbol', function (e) {
    if ( e.keyCode == 13 ){
-      addSymbol();
+       parseSymbols();
     }
 });
 
