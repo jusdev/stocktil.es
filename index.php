@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>StockTil.es - Visualize Your Investments</title>
+	<title>stockTil.es - Visualize Your Investments</title>
 	<meta charset="utf-8" />
 	<meta name="description" content="Quick Stock Monitoring" />
 	<meta name="author" content="Ashton Paul" />
+	<meta name="author" content="Hillius Ettinoffe" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 	
 	<link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
